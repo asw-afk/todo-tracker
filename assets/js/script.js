@@ -12,26 +12,26 @@ let fruitCake = [];
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
     //increment by one
-
+    
     //var sample array - [1, 2, 3,];
     //FOR LOOP
 
+        
+        let counter = 0;
 
-    let counter = 0;
-
-    $("#btm").click(function incrememnt() {
-        counter++;
-    }
-    );
-    console.log(counter);
+        $("#btm").click(function incrememnt() {
+            counter ++;
+        }
+        );
+        console.log(counter);
 }
 
 // Todo: create a function to create a task card
 function createTaskCard() {
-
-
+    
+    
     $("#dialog").dialog();
-    console.log("AGGRFAGSRFARGDSAGDRS");
+   console.log("AGGRFAGSRFARGDSAGDRS");
 
 }
 
@@ -42,45 +42,31 @@ function createTaskCard() {
 function renderTaskList() {
     // const strawberry = window.localStorage.getItem("fruitCake");
     // const banana = JSON.parse(user_id)["fruitCake"]
-
+    
     // const value = localStorage.getItem("fruitCake");
     // return JSON.parse(value);
-function gregory() {   
-     const raspberry = JSON.parse(localStorage.getItem('fruitCake'));
-    renderFUCK();
+       
+        // todoList.innerHTML = '';
+        // todoCountSpan.textContent = fruitCake.length;
 
-}
-    // var printBoot = function () {
-    //     $("#todoList").html("");
-    //     $("<li>")
-    //         .text(JSON.parse(localStorage))
-    //         .appendTo("todoList");
-    // }
-
-    function renderFUCK() {
-    todoList.innerHTML = '';
-    todoCountSpan.textContent = fruitCake.length;
-
-
-    for (let i = 0; i < fruitCake.length; i++) {
+        //render a new box
+    for (let i = 0; i < fruitCake.length; i++){
         const froot = fruitCake[i];
 
-        raspberry();
-        console.log("gid");
-
         const li = document.createElement('li');
-        li.textContent = froot;
+        li.textContent = froot; 
         li.setAttribute('data-index', i);
 
         const button = document.createElement('button');
         button.textContent = 'X';
 
         li.appendChild(button);
-        todoList.appendChild(li);
+        todoList.appendChild(li); 
         console.log("bg3 good");
-        }
     }
-}
+} 
+
+
 
 
 
@@ -91,28 +77,28 @@ function handleAddTask(event) {
     //taskTitle
     //datepicker
     //taskDescr
-
-
-    const title = taskTitle.value;
-    const date = datepicker.value;
-    const desc = taskDescr.value;
-    console.log("smbody get me through this nightmaare");
-
-    let Cake = {
-        title: taskTitle.value,
-        date: datepicker.value,
-        desc: taskDescr.value,
-    }
-
-    fruitCake.push({ Cake });
-
-
-    localStorage.setItem('fruitCake', JSON.stringify(fruitCake));
-    // localStorage.setItem('title', title);
-    // localStorage.setItem('date', date);
-    // localStorage.setItem('desc', desc)
-    console.log("i  cant eat this sheeeeelf");
-
+    
+    
+         const title = taskTitle.value;
+        const date = datepicker.value;
+        const desc = taskDescr.value;
+        console.log("smbody get me through this nightmaare");
+    
+        let Cake = {
+            title: taskTitle.value,
+            date: datepicker.value,
+            desc: taskDescr.value,
+        }
+    
+            fruitCake.push({Cake});
+       
+    
+        localStorage.setItem('fruitCake', JSON.stringify(fruitCake));
+        // localStorage.setItem('title', title);
+        // localStorage.setItem('date', date);
+        // localStorage.setItem('desc', desc)
+        console.log("i  cant eat this sheeeeelf");
+    
 }
 
 
@@ -125,11 +111,24 @@ function handleDeleteTask(event) {
 function handleDrop(event, ui) {
     $(function () {
         $('#skills-list').sortable({
-            placeholder: 'ui-state-highlight',
+          placeholder: 'ui-state-highlight',
         });
-    });
+      });
 
 }
+
+
+function gregory() {
+
+    const perry = JSON.parse(localStorage.getItem('fruitCake'));
+
+    if (perry !== null) {
+        fruitCake = perry;
+    }
+
+    renderTaskList();
+}   
+
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
@@ -140,9 +139,12 @@ $(function () {
     $("#datepicker").datepicker();
 });
 
-function fork() {
+function fork(){
     handleAddTask();
     renderTaskList();
 }
+
+gregory();
+
 $("#test").on('click', createTaskCard);
 $("#pikap").click(fork);
