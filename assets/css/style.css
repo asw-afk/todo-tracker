@@ -8,9 +8,15 @@ body {
 }
 
 .task-card {
+  background: red;
   margin: 0 auto;
 }
+
+/* .task-card .title {
+  
+} */
 
 .task-card:hover {
   cursor: grab;
 }
+

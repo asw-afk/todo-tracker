@@ -54,13 +54,30 @@ function renderTaskList() {
         const froot = fruitCake[i];
 
         const li = document.createElement('li');
-        li.textContent = froot; 
-        li.setAttribute('data-index', i);
+        li.className = 'task-card';
+
+        //Title Input
+        const toast =  document.createElement('div');
+        toast.textContent = froot.title;
+        
+        //Date input
+        const bread = document.createElement('div');
+        bread.textContent = froot.date;
+
+        //Description input
+        const frenchToast = document.createElement('div');
+        frenchToast.textContent = froot.desc;
 
         const button = document.createElement('button');
-        button.textContent = 'X';
+        button.textContent = 'Delete';
 
+
+        li.appendChild(toast);
+        li.appendChild(bread);
+        li.appendChild(frenchToast);
         li.appendChild(button);
+
+
         todoList.appendChild(li); 
         console.log("bg3 good");
     }
@@ -72,16 +89,15 @@ function renderTaskList() {
 
 // Todo: create a function to handle adding a new task
 function handleAddTask(event) {
-    console.log("FUCCKCCCC")
-
+    
     //taskTitle
     //datepicker
     //taskDescr
     
     
-         const title = taskTitle.value;
-        const date = datepicker.value;
-        const desc = taskDescr.value;
+        //  const title = taskTitle.value;
+        // const date = datepicker.value;
+        // const desc = taskDescr.value;
         console.log("smbody get me through this nightmaare");
     
         let Cake = {
@@ -90,7 +106,7 @@ function handleAddTask(event) {
             desc: taskDescr.value,
         }
     
-            fruitCake.push({Cake});
+            fruitCake.push(Cake);
        
     
         localStorage.setItem('fruitCake', JSON.stringify(fruitCake));
