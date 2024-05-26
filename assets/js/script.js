@@ -55,6 +55,7 @@ function renderTaskList() {
 
         const li = document.createElement('li');
         li.className = 'task-card';
+       // li.idName = 'list-group-item';
 
         //Title Input
         const toast =  document.createElement('div');
@@ -70,13 +71,16 @@ function renderTaskList() {
 
         const button = document.createElement('button');
         button.textContent = 'Delete';
-
+        button.className = 'del';
+        // const listEl = $('<li>');
+        // listEl.addClass('list-group-item')
+        //.text(listDetail);
 
         li.appendChild(toast);
         li.appendChild(bread);
         li.appendChild(frenchToast);
         li.appendChild(button);
-
+        
 
         todoList.appendChild(li); 
         console.log("bg3 good");
@@ -120,7 +124,7 @@ function handleAddTask(event) {
 
 // Todo: create a function to handle deleting a task
 function handleDeleteTask(event) {
-
+$('del').onClick
 }
 
 // Todo: create a function to handle dropping a task into a new status lane
@@ -133,6 +137,9 @@ function handleDrop(event, ui) {
 
 }
 
+$( function() {
+    $( "#sortable" ).sortable();
+  } );
 
 function gregory() {
 
