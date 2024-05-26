@@ -55,7 +55,7 @@ function renderTaskList() {
 
         const li = document.createElement('li');
         li.className = 'task-card';
-       // li.idName = 'list-group-item';
+        li.id = 'sortable';
 
         //Title Input
         const toast =  document.createElement('div');
@@ -71,7 +71,7 @@ function renderTaskList() {
 
         const button = document.createElement('button');
         button.textContent = 'Delete';
-        button.className = 'del';
+        button.id = 'del';
         // const listEl = $('<li>');
         // listEl.addClass('list-group-item')
         //.text(listDetail);
@@ -94,14 +94,7 @@ function renderTaskList() {
 // Todo: create a function to handle adding a new task
 function handleAddTask(event) {
     
-    //taskTitle
-    //datepicker
-    //taskDescr
-    
-    
-        //  const title = taskTitle.value;
-        // const date = datepicker.value;
-        // const desc = taskDescr.value;
+   
         console.log("smbody get me through this nightmaare");
     
         let Cake = {
@@ -123,9 +116,15 @@ function handleAddTask(event) {
 
 
 // Todo: create a function to handle deleting a task
-function handleDeleteTask(event) {
-$('del').onClick
+function handleDeleteTask(button) {
+let row = button.parentNode.parentNode;
+
+li.parentBode.RemoveChild(row);
+console.log("trst");
 }
+
+
+$(".del").click(handleDeleteTask);
 
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
@@ -138,7 +137,7 @@ function handleDrop(event, ui) {
 }
 
 $( function() {
-    $( "#sortable" ).sortable();
+    $( "#todoList" ).sortable();
   } );
 
 function gregory() {
