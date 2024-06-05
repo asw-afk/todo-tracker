@@ -5,25 +5,15 @@ let nextId = JSON.parse(localStorage.getItem("nextId"));
 const todoCountSpan = document.querySelector('#todoList');
 
 
-let id = [];
+
+//fruitCake is the tasks array
 let fruitCake = [];
 
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
-    //increment by one
-    
-    //var sample array - [1, 2, 3,];
-    //FOR LOOP
+    return Math.floor(Math.random() * 100000).toString();
 
-        
-        let counter = 0;
-
-        $("#btm").click(function incrememnt() {
-            counter ++;
-        }
-        );
-        console.log(counter);
 }
 
 // Todo: create a function to create a task card
@@ -40,16 +30,8 @@ function createTaskCard() {
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
-    // const strawberry = window.localStorage.getItem("fruitCake");
-    // const banana = JSON.parse(user_id)["fruitCake"]
-    
-    // const value = localStorage.getItem("fruitCake");
-    // return JSON.parse(value);
-       
-        // todoList.innerHTML = '';
-        // todoCountSpan.textContent = fruitCake.length;
-
-        //render a new box
+ 
+        // render a new box
     for (let i = 0; i < fruitCake.length; i++){
         const froot = fruitCake[i];
 
@@ -69,12 +51,11 @@ function renderTaskList() {
         const frenchToast = document.createElement('div');
         frenchToast.textContent = froot.desc;
 
+        //Delete Button
         const button = document.createElement('button');
         button.textContent = 'Delete';
         button.id = 'del';
-        // const listEl = $('<li>');
-        // listEl.addClass('list-group-item')
-        //.text(listDetail);
+    
 
         li.appendChild(toast);
         li.appendChild(bread);
@@ -84,10 +65,10 @@ function renderTaskList() {
 
         todoList.appendChild(li); 
         console.log("bg3 good");
-    }
+   }
+
+   
 } 
-
-
 
 
 
@@ -107,38 +88,35 @@ function handleAddTask(event) {
        
     
         localStorage.setItem('fruitCake', JSON.stringify(fruitCake));
-        // localStorage.setItem('title', title);
-        // localStorage.setItem('date', date);
-        // localStorage.setItem('desc', desc)
         console.log("i  cant eat this sheeeeelf");
     
 }
 
 
 // Todo: create a function to handle deleting a task
-function handleDeleteTask(button) {
-let row = button.parentNode.parentNode;
+function handleDeleteTask(event) {
 
-li.parentBode.RemoveChild(row);
+const deleteCardId = $(event.target).parent().parent()[0].dataset.dialog;
+fruitCake = fruitCake.filter((dialog) => {
+    return dialog.id !== deleteCardId;
+});
+
+
 console.log("trst");
 }
 
 
-$(".del").click(handleDeleteTask);
+$("#del").click(handleDeleteTask);
 
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
-    $(function () {
-        $('#skills-list').sortable({
-          placeholder: 'ui-state-highlight',
-        });
-      });
+    $( function() {
+        $( "#todoList" ).sortable();
+      } );
+    
 
 }
 
-$( function() {
-    $( "#todoList" ).sortable();
-  } );
 
 function gregory() {
 
@@ -167,6 +145,7 @@ function fork(){
 }
 
 gregory();
+handleDrop();
 
 $("#test").on('click', createTaskCard);
-$("#pikap").click(fork);
+$("#pikap").click(fork);    
